@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+      <span><a href="{{ '/about' | url }}">About</a></span>
+    </header>
+    <main {% if layout == "layouts/post.njk" %}class="post"{% endif %}>
+      {{ content | safe }}
+    </main>
+    <section>
+      <p>
+        Amin Al Hazwani worked as a graphic designer, web designer, event organizer, front-end developer, mobile interface designer, design system designer, product designer, and today is a design ops director. He designed a wide range of things, from icons to design systems. He organized design events and designed design orgs. He worked alone, in a duo, in a small team, in a medium-sized design agency, in a big distributed company. He’s literally tried it all.
+      </p>
+      <p>You can reach him at → amin at hey dot com.</p>
+    </section>
+    <footer>
+      <p><a href="https://twitter.com/aminalhazwani/">Twitter ↗</a> <a href="https://github.com/aminalhazwani/">GitHub ↗</a> <a href="https://www.linkedin.com/in/aminalhazwani/">LinkedIn ↗</a></p>
+    </footer>
+  </body>
+</html>
