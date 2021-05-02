@@ -1,10 +1,27 @@
 const fs = require("fs");
+const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
-  // Copy the `img`, `css`, and `fonts` folders to the output
-  eleventyConfig.addPassthroughCopy("img");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("fonts");
+  // Watch
+  eleventyConfig.addWatchTarget('./css/index.css')
+  eleventyConfig.addWatchTarget('./_tmp/index.css')
+  eleventyConfig.addWatchTarget('./tailwind.config.js')
+
+  // Copy `css` to the output
+  eleventyConfig.addPassthroughCopy({ './_tmp/index.css': './css/index.css' })
+
+  // Minify HTML
+  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+    if( outputPath && outputPath.endsWith(".html") ) {
+      let minified = htmlmin.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true
+      });
+      return minified;
+    }
+    return content;
+  });
 
   // Override Browsersync defaults (used only with --serve)
   eleventyConfig.setBrowserSyncConfig({
