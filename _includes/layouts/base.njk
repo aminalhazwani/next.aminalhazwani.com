@@ -1,28 +1,50 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="col-span-6">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" class="col-span-6">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ description or metadata.description }}">
     <link rel="stylesheet" href="{{ '/css/index.css' | url }}">
   </head>
-  <body>
-    <header>
-      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
-      <span><a href="{{ '/about' | url }}">About</a></span>
+  <body class="text-base" style="background: #d0d7d6">
+    <header class="bg-black text-white p-2 mb-12 antialiased lg:pb-2">
+      <nav class="grid grid-cols-12 gap-x-2">
+        <h1 class="col-span-12 mt-16 mb-4 lg:col-span-6 lg:col-start-4 lg:text-xl">
+          <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+        </h1>
+        <a href="{{ '/' | url }}#projects" class="col-span-6 lg:col-span-3 lg:col-start-4">Projects</a>
+        <a href="{{ '/' | url }}#contact" class="col-span-4 lg:col-span-2">Contact</a>
+        <a href="{{ '/' | url }}#about" class="col-span-2 lg:col-span-1">About</a>
+      </nav>
     </header>
-    <main {% if layout == "layouts/post.njk" %}class="post"{% endif %}>
+    <main>
       {{ content | safe }}
     </main>
-    <section>
-      <p>
-        Amin Al Hazwani worked as a graphic designer, web designer, event organizer, front-end developer, mobile interface designer, design system designer, product designer, and today is a design ops director. He designed a wide range of things, from icons to design systems. He organized design events and designed design orgs. He worked alone, in a duo, in a small team, in a medium-sized design agency, in a big distributed company. He’s literally tried it all.
-      </p>
-      <p>You can reach him at → amin at hey dot com.</p>
-    </section>
     <footer>
-      <p><a href="https://twitter.com/aminalhazwani/">Twitter ↗</a> <a href="https://github.com/aminalhazwani/">GitHub ↗</a> <a href="https://www.linkedin.com/in/aminalhazwani/">LinkedIn ↗</a></p>
+      <section class="pt-16 pb-2 px-2" style="background: #f3f3ec">
+        <div class="grid grid-cols-12 gap-x-2">
+          <h2 class="col-span-12 mb-4 lg:text-xl lg:col-start-4 lg:col-span-6">About</h2>
+          <p class="hyphes col-span-12 lg:col-start-4 lg:col-span-6 lg:text-lg">
+            I am an Italian designer with Syrian roots, currently living and working in sunny Milan, Italy. I was born in Modena, it might ring a bell if you watched the second season of “Master of None”, and raised in Mantua, well-known by readers of “Romeo and Juliet”. My span of interests is very diverse, and I have a natural curiosity for understanding how things function.
+          </p>
+          <p class="hyphes col-span-12 lg:col-start-4 lg:col-start-7 lg:col-span-6">
+            Whatever I do I try to do it at the highest level possible. I am an “all-in” person, I take everything with a ground of seriousness, to educate myself, to shape an opinion, to become a well-rounded person. I also have an itch for foreign languages and that brought me to Bolzano, a city surrounded by the Italian Alps, where I attended the trilingual Faculty of Design and Art, and from where I graduated in 2015.
+          </p>
+          <p class="hyphes indent col-span-12 lg:col-start-4 lg:col-start-7 lg:col-span-6">
+            During my studies, at the end of 2010, I founded my design studio working between Bolzano, Milan, and Berlin. I started my career as a graphic designer and then quickly widened my skills first as a web designer and developer, and later on as a product designer. Running my own design practice allowed me to nurture my leadership skills and offered me challenging professional opportunities.
+          </p>
+        </div>
+      </section>
+      <section class="bg-black text-white px-2 pt-16 pb-2 antialiased">
+        <div class="grid grid-cols-12 gap-x-2">
+          <h2 class="col-span-12 mb-4 lg:text-xl lg:col-start-4 lg:col-span-6">Contacts</h2>
+          <p class="col-span-6 lg:col-start-4 lg:col-span-3">E-mail</p>
+          <p class="col-span-6 mb-2">amin at hey dot com</p>
+          <p class="col-span-6 lg:col-start-4 lg:col-span-3">Almost everywhere</p>
+          <p class="col-span-6">/aminalhazwani</p>
+        </div>
+      </section>
     </footer>
   </body>
 </html>
